@@ -12,9 +12,23 @@ class DoublyLinkedList {
     this.tail = null;
   }
 
-  setHead(node) {}
+  setHead(node) {
+    if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+      return;
+    }
+    this.insertBefore(this.head, node);
+  }
 
-  setTail(node) {}
+  setTail(node) {
+    if (this.tail === null) {
+      this.head = node;
+      this.tail = node;
+      return;
+    }
+    this.insertAfter(this.tail, node);
+  }
 
   insertBefore(node, nodeToInsert) {
     if (nodeToInsert === this.head && nodeToInsert === this.tail) return;

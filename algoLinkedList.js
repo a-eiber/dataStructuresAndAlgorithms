@@ -1,3 +1,4 @@
+// This is an input class. Do not edit.
 class Node {
   constructor(value) {
     this.value = value;
@@ -6,6 +7,7 @@ class Node {
   }
 }
 
+// Feel free to add new properties and methods to the class.
 class DoublyLinkedList {
   constructor() {
     this.head = null;
@@ -85,12 +87,7 @@ class DoublyLinkedList {
   remove(node) {
     if (node === this.head) this.head = this.head.next;
     if (node === this.tail) this.tail = this.tail.prev;
-
-    if (node.prev !== null) node.prev.next = node.next;
-    if (node.next !== null) node.next.prev = node.prev;
-
-    node.prev = null;
-    node.next = null;
+    this.removeNodeBindings(node);
   }
 
   containsNodeWithValue(value) {
@@ -100,4 +97,15 @@ class DoublyLinkedList {
     }
     return node !== null;
   }
+
+  removeNodeBindings(node) {
+    if (node.prev !== null) node.prev.next = node.next;
+    if (node.next !== null) node.next.prev = node.prev;
+    node.prev = null;
+    node.next = null;
+  }
 }
+
+// Do not edit the lines below.
+exports.Node = Node;
+exports.DoublyLinkedList = DoublyLinkedList;

@@ -31,7 +31,9 @@ class LinkedList {
     if (!removedHead) {
       return;
     }
-    this.head = removedHead.getNextNode();
+    if (removedHead.next) {
+      this.head = removedHead.next;
+    }
     return removedHead.data;
   }
 
@@ -40,10 +42,31 @@ class LinkedList {
     let output = '<head> ';
     while (currentNode !== null) {
       output += currentNode.data + ' ';
-      currentNode = currentNode.getNextNode();
+      currentNode = currentNode.next;
     }
     output += '<tail>';
     console.log(output);
+  }
+
+  findNodeIteratively(data) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.data === data) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
+
+  findNodeRecursively(data, currentNode = this.head) {
+    if (currentNode === null) {
+      return null;
+    } else if (currentNode.data === data) {
+      return currentNode;
+    } else {
+      return this.findNodeRecursively(data, currentNode.next);
+    }
   }
 
   swapNodes(data1, data2) {
